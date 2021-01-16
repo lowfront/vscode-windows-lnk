@@ -1,0 +1,61 @@
+{
+	"name": "vscode-windows-lnk",
+	"displayName": "Windows lnk",
+	"description": "Open the original file of the window shortcut(lnk) file.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"publisher": "lowfront",
+	"icon": "logo.png",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/lowfront/vscode-windows-lnk"
+  },
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCustomEditor:ink.connector"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"customEditors": [
+			{
+				"viewType": "ink.connector",
+				"displayName": "Ink Connector",
+				"selector": [
+					{
+						"filenamePattern": "*.lnk"
+					}
+				],
+				"priority": "option"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	},
+	"dependencies": {
+		"iconv-lite": "^0.6.2",
+		"windows-shortcuts": "^0.1.6"
+	}
+}
